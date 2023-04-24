@@ -7,22 +7,26 @@
 
 export function flatArrays(array) {
   // Your code goes here...
-var subArray = [];
-var flattened = [];
-for (let index = array.length; index > 0; index--) {
-  if (Array.isArray(array[index]) && index == array.length) {
-    subArray.push(array[index]);
-    array.pop();
-  }
-}
-for (let index = 0; index < array.length; index++) {
-  flattened.push(array[index]);
-}
+  const flatArray = [];
 
-for (let index = 0; index < subArray.length; index++) {
-  flattened.push(subArray[index]);
-}
-return flattened;
+  for (var i = 0; i < array.length; i++) {
+    if (Array.isArray(array[i])) {
+    
+      for (let index = 0; index < array[i].length; index++) {
+        if (Array.isArray(array[i][index])) {
+          return undefined;
+        } else {
+          flatArray.push(array[i][index])
+        }
+        
+        
+      }
+    } else {
+      flatArray.push(array[i]);
+    } 
+  }
+
+  return flatArray;
 }
 
 
